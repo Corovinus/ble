@@ -1,0 +1,47 @@
+// app/build.gradle
+
+plugins {
+    id 'com.android.application'       // ← this makes the `android {}` block valid
+    id 'org.jetbrains.kotlin.android'  // ← if you’re using Kotlin
+}
+
+android {
+    namespace 'com.example.myapplication'  // ← your package / namespace
+    compileSdk 34
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        // swap out whatever “24” is for “17”
+        jvmTarget = "17"
+    }
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.5.15"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+    }
+    buildToolsVersion '34.0.0'
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "androidx.activity:activity-compose:1.9.0"
+    implementation "androidx.compose.material3:material3:1.1.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0"
+
+    // protobuf runtimes you added
+    implementation "com.google.protobuf:protobuf-java:4.31.0"
+}
